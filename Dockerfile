@@ -1,7 +1,7 @@
 FROM maven
 COPY . .
 
-EXPOSE 8090
+EXPOSE 8080
 
 
 ## Add a sleep command to delay execution

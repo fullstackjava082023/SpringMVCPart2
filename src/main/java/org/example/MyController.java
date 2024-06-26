@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Date;
 import java.util.Map;
 
-//@Controller
+@Controller
 public class MyController {
     //localhost:8080/myapp/ -> do something1:
     //localhost:8080/myapp/greet/ -> do something 2:
@@ -24,7 +24,9 @@ public class MyController {
     //"mode", "we are sad today)
 
     @RequestMapping("/greet/{name}")
-    public ModelAndView greet(@RequestParam String mode, @PathVariable("name") String name){
+    public ModelAndView greet(
+            @RequestParam(value = "mode", required = false, defaultValue = "defaultMode") String mode,
+            @PathVariable("name") String name){
         System.out.println("catched request!");
         System.out.println(mode);
         ModelAndView modelAndView = new ModelAndView("greet", usersFromDB);
